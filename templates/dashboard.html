@@ -1,0 +1,549 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="icon" src="{% static 'images/logo.png' %}" type="image" sizes="16x16">  
+    <title>healthFeed</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{% static 'bootstrap.min1.css' %}" type="text/css" rel="stylesheet"/>
+    <link href="{% static 'font-awesome.min.css' %}" type="text/css" rel="stylesheet"/>
+    
+    
+    <link href="{% static 'styledasboard.css' %}" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!--[if lt IE 9]>
+		<script src="assets/js/html5shiv.min.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+
+            .highcharts-figure, .highcharts-data-table table {
+                min-width: 320px; 
+                max-width: 660px;
+                margin: 1em auto;
+            }
+
+            .highcharts-data-table table {
+                font-family: Verdana, sans-serif;
+                border-collapse: collapse;
+                border: 1px solid #EBEBEB;
+                margin: 10px auto;
+                text-align: center;
+                width: 100%;
+                max-width: 500px;
+            }
+            .highcharts-data-table caption {
+                padding: 1em 0;
+                font-size: 1.2em;
+                color: #555;
+            }
+            .highcharts-data-table th {
+                font-weight: 600;
+                padding: 0.5em;
+            }
+            .highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+                padding: 0.5em;
+            }
+            .highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+                background: #f8f8f8;
+            }
+            .highcharts-data-table tr:hover {
+                background: #f1f7ff;
+            }
+
+    </style>
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="header">
+			<div class="header-left">
+				<a href="index-2.html" class="logo">
+					<img src="{% static 'images/logo.png' %}" width="55" height="55" alt=""> <span>healthFeed</span>
+				</a>
+            </div>
+			<a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+            <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
+            <ul class="nav user-menu float-right">
+                
+                <li class="nav-item dropdown has-arrow">
+                    <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
+                        
+						<span>User</span>
+                    </a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="profile.html">My Profile</a>
+						<a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
+						<a class="dropdown-item" href="settings.html">Settings</a>
+						<a class="dropdown-item" href="login.html">Logout</a>
+					</div>
+                </li>
+            </ul>
+            
+        </div>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+
+               <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">Main</li>
+                        <li class="active">
+                            <a href="dashboard"><i class="fas fa-lungs"></i> <span>TB</span></a>
+                        </li>
+						<li>
+                            <a href="epi"><i class="fas fa-syringe"></i> <span>EPI</span></a>
+                        </li>
+                        
+                        <li>
+                            <a href="LHW"><i class="fas fa-female"></i> <span>LHW</span></a>
+                            
+                        </li>
+                        <li class="submenu">
+							<a href="#"><i class="fal fa-chart-bar"></i> <span> LHW Evaluation </span> <span class="menu-arrow"></span></a>
+							<ul style="display: none;">
+								<li><a href="LHW_Areawise"> Area Wise </a></li>
+								<li><a href="LHW_ReportsWise"> Reports Wise </a></li>
+                                
+							</ul>
+						</li>
+                        <li>
+                            <a href="Trends"><i class="fas fa-chart-line"></i> <span>Trends</span></a>
+                        </li>
+                        <li class="submenu">
+							<a href="#"><i class="far fa-lightbulb"></i> <span> Forecasting </span> <span class="menu-arrow"></span></a>
+							<ul style="display: none;">
+								<li><a href="Forecasting"> Covered Area </a></li>
+								<li><a href="infant_death"> Infant Death </a></li>
+                                
+							</ul>
+						</li>
+
+                        
+                                              		
+						
+                        
+						
+						<li class="submenu">
+							<a href="#"><i class="far fa-file-alt"></i> <span> Reports </span> <span class="menu-arrow"></span></a>
+							<ul style="display: none;">
+								<li><a href="Reports_TB"> TB </a></li>
+								<li><a href="Reports_EPI"> EPI </a></li>
+                                <li><a href="Reports_LHW"> LHW </a></li>
+							</ul>
+						</li>
+                       
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="page-wrapper">
+            <div class="content">
+                {% for Division in data %}
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="dash-widget">
+							<span class="dash-widget-bg1"><i  aria-hidden="true"></i></span>
+							<div class="dash-widget-info text-right">
+                                <h3>{{ Division.Total_Cases }}</h3>
+                                <p>Total Cases</p>
+							</div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="dash-widget">
+                            <span class="dash-widget-bg2"><i ></i></span>
+                            <div class="dash-widget-info text-right">
+                                <h3>{{ Division.Treatement_Completed }}</h3>
+                                <p>Completed</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="dash-widget">
+                            <span class="dash-widget-bg3"><i  aria-hidden="true"></i></span>
+                            <div class="dash-widget-info text-right">
+                                <h3>{{ Division.Treatement_Incompleted }}</h3>
+                                <p> Incompleted</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="dash-widget">
+                            <span class="dash-widget-bg4"><i  aria-hidden="true"></i></span>
+                            <div class="dash-widget-info text-right">
+                                <h3>{{ Division.No_of_Death }}</h3>
+                                <p>No of Death</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="row">
+                    <div class="col-12 col-md-7 col-lg-7 col-xl-7">
+						<div class="card">
+							<div class="card-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                              
+                                  <!-- Left Pane -->
+                                  
+                                  
+
+
+                                    
+                                    <!-- Highcharts display -->
+                                    
+
+                                    <div class="border" id="container" style="min-width: 560px; height: 300px; margin: 0 auto"></div>
+                                                                      
+                                  
+                                  </div>
+                                </div>
+                                  
+                                  <!-- Chartjs libraries -->
+                                  <script src="https://code.highcharts.com/highcharts.js"></script>
+                                  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                                  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+                                    
+                                  <script>
+                                    _categories ={{ categories|safe }};
+                                    _yearlydeath ={{ yearlydeath|safe }};
+                                 
+                                       
+                                    Highcharts.chart('container', {
+                                    chart: {
+                                            type: 'column'
+                                    },
+                                    title: {
+                                            text: 'Yearly Death Ratio For TB'
+                                    },
+                                    subtitle: {
+                                            text: ''
+                                    },
+                                    xAxis: {
+                                            categories:_categories,
+                                            crosshair: true
+                                    },
+                                    yAxis: {
+                                            min: 0,
+                                            title: {
+                                        text: 'No. of Death'
+                                            }
+                                    },
+                                    tooltip: {
+                                            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                                            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                        '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                                            footerFormat: '</table>',
+                                            shared: true,
+                                            useHTML: true
+                                    },
+                                    plotOptions: {
+                                            column: {
+                                        pointPadding: 0.2,
+                                        borderWidth: 0
+                                      }
+                                    },
+                                    series: [{
+                                            name: 'Year',
+                                            data: _yearlydeath
+                                        
+                                    }]
+                                    });
+                                    </script>
+                                  
+                                  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+                                  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+                                  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+                              
+                                
+                                
+							</div>
+						</div>
+					</div>
+					<div  class="col-12 col-md-5 pt-0 col-lg-5 col-xl-5 padding-0">
+						<div  class="card">
+							
+									
+                                <div id="highcharts-t1grp0b-1896" dir="ltr" class="highcharts-container " style="position: relative;  width: 339px; height: 310px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); user-select: none;" tabindex="0" aria-hidden="false">
+                      
+                                    <svg version="1.1" class="highcharts-root" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="530" height="350" viewBox="0 0 239 410" aria-label="Interactive chart" aria-hidden="false"><desc aria-hidden="true">Created with Highcharts 8.2.2</desc><defs aria-hidden="true"><clipPath id="highcharts-t1grp0b-1898-"><rect x="0" y="0" width="241" height="352" fill="none"></rect></clipPath></defs>
+              
+                                    <rect fill="#ffffff" class="highcharts-background" x="0" y="0" width="339" height="250" rx="0" ry="0" aria-hidden="true"></rect><rect fill="none" class="highcharts-plot-background" x="10" y="43" width="141" height="252" aria-hidden="true"></rect><rect fill="none" class="highcharts-plot-border" data-z-index="1" x="10" y="43" width="141" height="352" aria-hidden="true"></rect><g class="highcharts-series-group" data-z-index="3" aria-hidden="false"><g class="highcharts-series highcharts-series-0 highcharts-map-series highcharts-color-0 highcharts-tracker" data-z-index="0.1" opacity="1" transform="translate(10,43) scale(1 1)" stroke-width="1" clip-path="url(#highcharts-t1grp0b-1898-)" aria-hidden="false"><g transform="translate(0,0) scale(1 1)" aria-hidden="false" aria-label="">
+                                     
+                                    <a xlink:title="1" xlink:href="">
+                                    <path fill="rgb(59, 78, 140)" d="M 19.06967213114754 191.7469262295082 C 19.743756147540992 192.0358606557377 20.418129098360648 192.32479508196724 21.0922131147541 192.61372950819674 C 21.066786885245897 197.67846106557377 17.46608606557377 203.65680327868853 18.202868852459016 205.9047131147541 C 19.48284836065574 208.26472950819672 23.222237704918037 208.11737295081969 23.98155737704918 210.81659836065575 C 23.788838114754107 211.97204713114755 23.59640778688524 213.12807377049182 23.403688524590166 214.28381147540983 C 23.692622950819672 215.63197950819676 23.98155737704918 216.98072540983608 24.27049180327869 218.32889344262296 C 23.868295081967215 218.88422540983606 24.241020491803287 218.50167622950823 23.692622950819672 218.906762295082 C 20.128327868852455 221.2266168032787 4.073108606557372 217.78425204918034 0 216.88422131147541 C 0 216.0174180327869 0 215.15032581967216 0 214.28381147540983 C 1.620922131147545 212.26098155737708 5.188684426229516 212.05699385245902 6.645491803278689 209.94979508196724 C 11.087858606557377 203.52389344262295 12.602163934426226 196.17600204918034 19.06967213114754 191.7469262295082" stroke="white" stroke-width="inherit" opacity="1" class="highcharts-point highcharts-color-0 highcharts-name-karachi" tabindex="-1" role="img" aria-label="2. Karachi, value: 23,483." style="outline: 0px;"></path>
+                                    </a>
+                                    <a xlink:title="2" xlink:href="accounts/table">
+                                    <path fill="rgb(140, 59, 132)" d="M 96.79303278688525 103.6219262295082 C 97.56333196721313 103.91086065573771 98.33420901639343 104.19979508196721 99.10450819672131 104.48872950819673 C 100.62545901639345 112.78056967213116 104.0776475409836 114.99034016393443 110.08401639344262 118.64651639344262 C 110.08401639344262 119.03166598360656 110.08401639344262 119.41710450819673 110.08401639344262 119.80225409836066 C 107.88493647540984 122.1957868852459 107.70868647540983 125.69593852459018 105.75 128.4702868852459 C 101.65406557377048 134.27122336065574 82.97532172131149 143.39750614754098 89.56967213114754 155.05225409836066 C 92.84387704918034 156.68935655737704 96.11923770491804 158.3270368852459 99.39344262295083 159.9641393442623 C 104.6543606557377 161.269256147541 107.23974590163934 158.9652930327869 110.66188524590164 161.69774590163934 C 110.79941803278689 166.61309836065573 110.88089754098363 171.90637704918032 108.9282786885246 174.69979508196724 C 104.3059057377049 174.02571106557377 99.68179918032789 173.35133811475413 95.0594262295082 172.67725409836066 C 90.31945696721313 171.9716762295082 85.13799590163936 172.47846721311475 80.90163934426229 171.81045081967216 C 79.16832172131147 171.90666598360656 77.43413729508198 172.002881147541 75.70081967213115 172.09938524590166 C 72.19517827868852 171.0285942622951 68.29629713114755 162.03868852459016 64.72131147540983 160.54200819672133 C 60.019192622950825 158.57349795081967 53.38785860655737 160.20135450819674 49.407786885245905 157.94159836065575 C 49.62333196721311 150.98579098360656 53.30897950819673 148.7162110655738 53.74180327868853 144.07274590163934 C 51.71984016393443 141.04182377049182 48.28152049180328 141.08892008196722 45.9405737704918 138.58299180327867 C 46.744389344262295 135.691625 49.15496926229508 135.78321721311477 49.985655737704924 133.38217213114754 C 49.43061270491804 132.41857581967213 49.21044467213115 132.1322418032787 49.118852459016395 130.49282786885246 C 49.985655737704924 129.33709016393442 50.852459016393446 128.18106352459017 51.71926229508197 127.02561475409837 C 52.875 126.64046516393444 54.03073770491804 126.25502663934427 55.18647540983607 125.86987704918033 C 55.228948770491805 124.34372540983607 55.20034426229508 124.21543852459017 56.05327868852459 123.55840163934427 C 58.3592643442623 122.54366393442623 60.87357172131148 120.95799180327869 62.69877049180328 120.38012295081967 C 63.95072336065575 120.28361885245901 65.20296516393442 120.1874036885246 66.45491803278689 120.09118852459017 C 69.142875 118.40756762295082 69.5577848360656 114.84500614754099 73.38934426229508 113.73463114754098 C 75.89585040983606 113.00825 76.99033401639343 114.0411905737705 78.59016393442623 113.15676229508196 C 79.89065778688524 108.52514344262296 92.74650614754098 106.04117418032787 96.79303278688525 103.6219262295082" stroke="white" stroke-width="inherit" opacity="1" class="highcharts-point highcharts-color-0 highcharts-name-sukkur" tabindex="-1" role="img" aria-label="3. Sukkur, value: 27,989." style="outline: 0px;"></path>
+                                    </a>
+              
+              
+                                    <a xlink:title="3" target="myframe" xlink:href="{% static 'Mirpurkhas.svg' %}">
+                                      
+                                    <path fill="rgb(59, 140, 73)" d="M 110.66188524590164 186.54610655737707 C 113.50471106557379 186.91305327868852 113.69020696721311 188.8468913934426 116.1516393442623 189.43545081967216 C 119.32962909836067 189.24273155737706 122.5084856557377 189.05001229508198 125.68647540983608 188.85758196721312 C 126.2418073770492 189.2597786885246 125.85954713114756 188.8867643442623 126.26434426229508 189.43545081967216 C 127.57437295081968 191.68480532786884 125.93900409836067 195.7183299180328 126.8422131147541 198.6813524590164 C 127.79309631147544 201.80068852459019 131.53219672131146 204.00670286885247 133.1987704918033 206.48258196721312 C 133.7766393442623 208.6010491803279 134.35450819672133 210.72038319672134 134.93237704918033 212.83913934426232 C 136.66569467213117 216.01712909836067 138.39987909836066 219.1959856557377 140.1331967213115 222.37397540983608 C 137.8598606557377 224.48406352459017 136.89106352459018 225.77791188524594 137.82172131147541 229.8862704918033 C 138.98612704918034 230.27517622950822 140.2380799180328 230.53348360655738 141 231.33094262295083 C 139.45188934426233 233.3985573770492 137.45766393442625 232.5025717213115 135.22131147540983 233.9313524590164 C 134.45101229508197 234.99058606557378 133.68013524590165 236.0501086065574 132.90983606557378 237.109631147541 C 130.52005942622952 238.6536967213115 124.74888319672132 237.754243852459 123.66393442622952 235.95389344262296 C 123.1262274590164 234.43092008196723 123.49895286885246 232.62565778688526 122.50819672131148 231.61987704918033 C 118.27097336065576 232.77532581967213 114.03230532786885 233.9313524590164 109.79508196721312 235.08709016393445 C 106.40674795081968 236.55921106557378 106.15768647540983 241.794125 96.79303278688525 239.42110655737704 C 94.66589754098362 238.8819549180328 93.61128688524592 236.50835860655738 91.8811475409836 235.95389344262296 C 85.83635040983606 234.01629918032788 77.56675819672131 239.904493852459 74.54508196721312 235.08709016393445 C 72.39627663934426 230.16306967213114 84.34689344262294 220.85360245901643 82.63524590163935 215.15061475409837 C 81.39253893442623 212.96655942622954 79.28389549180326 214.28756762295083 77.4344262295082 212.83913934426232 C 76.18507377049183 211.86051844262298 72.7325963114754 208.94632581967215 71.94467213114754 207.63831967213116 C 71.75195286885246 205.03819877049182 71.55952254098362 202.43721106557376 71.36680327868852 199.83709016393442 C 70.63319877049182 196.455112704918 67.7161168032787 193.60188524590163 69.05532786885246 188.85758196721312 C 69.44683401639345 188.2638217213115 69.37893442622952 188.3923975409836 69.92213114754098 187.99077868852459 C 71.94438319672132 188.37592827868852 73.96750204918033 188.7613668032787 75.98975409836066 189.14651639344262 C 76.85655737704919 190.68740368852457 77.72336065573771 192.2285799180328 78.59016393442623 193.76946721311475 C 82.44223770491803 193.76946721311475 86.29546721311476 193.76946721311475 90.14754098360656 193.76946721311475 C 91.3463299180328 194.25805532786887 90.88403483606557 195.20200409836065 93.03688524590164 195.50307377049182 C 96.98806352459016 193.69896721311477 98.20910040983605 189.88647745901642 101.70491803278689 187.99077868852459 C 103.91815573770491 186.79054508196722 108.12041803278687 187.69548770491804 110.66188524590164 186.54610655737707" stroke="white" stroke-width="inherit" opacity="1" class="highcharts-point highcharts-color-0 highcharts-name-mirpur-khas" tabindex="-1" role="img" aria-label="5. Mirpur Khas, value: 18,874." style="outline: 0px;"></path>
+                                    </a>
+                                    
+                                    <a xlink:title="4" target="f" xlink:href="{% static 'Shaheed Benazeerabad.svg' %}">
+                                      
+                                    <path fill="rgb(140, 98, 59)" d="M 45.07377049180328 139.1608606557377 C 50.43494877049181 139.13283401639345 51.929028688524596 141.24552254098361 54.31967213114754 144.07274590163934 C 53.856799180327876 148.52580327868853 47.67909221311476 152.96036885245903 50.852459016393446 158.51946721311475 C 59.02352459016393 159.18603893442622 65.22983606557378 160.09907172131147 69.92213114754098 164.00922131147541 C 72.42141393442623 166.09186065573772 72.65487295081967 171.12134221311476 76.56762295081968 171.81045081967216 C 86.3821475409836 173.5382786885246 99.29462704918033 171.86245901639344 108.06147540983608 174.4108606557377 C 108.06147540983608 176.62583196721312 108.06147540983608 178.84138114754097 108.06147540983608 181.0563524590164 C 108.79103483606558 183.23838524590167 110.85691598360656 183.83098975409837 111.52868852459017 186.25717213114754 C 111.33596926229508 186.44960245901643 111.14353893442625 186.64232172131148 110.95081967213116 186.83504098360658 C 109.55642213114754 187.02718237704917 102.74017008196721 187.6960655737705 101.9938524590164 187.99077868852459 C 97.69393032786887 189.68855737704916 97.57633401639345 195.28030532786886 91.5922131147541 195.79200819672133 C 87.94210450819672 192.91711065573773 81.69794262295082 195.518387295082 77.72336065573771 193.19159836065575 C 77.43789344262294 191.1525881147541 76.73318237704918 189.87925409836066 75.12295081967214 189.14651639344262 C 72.99003688524591 188.5877172131148 65.6461905737705 187.64665778688524 64.14344262295083 187.99077868852459 C 62.61642418032787 188.34010040983608 62.33529098360657 189.93010655737703 60.38729508196722 189.43545081967216 C 54.56237704918033 187.00320081967214 56.6242131147541 181.876637295082 55.18647540983607 178.16700819672133 C 51.86575204918033 176.92372336065574 51.35578278688526 177.2169918032787 49.118852459016395 179.61168032786884 C 42.68312704918033 179.63999590163934 38.9307356557377 173.064137295082 35.82786885245902 169.49897540983608 C 36.11680327868853 167.0912848360656 36.40573770491803 164.68301639344264 36.69467213114754 162.27561475409837 C 35.73165368852458 161.69774590163934 34.76834631147542 161.11987704918033 33.80532786885246 160.54200819672133 C 34.45051844262295 157.5602049180328 33.905588114754096 154.54401844262296 34.38319672131148 151.58504098360658 C 34.47941188524591 151.4885368852459 34.57591598360655 151.39232172131148 34.67213114754099 151.29610655737704 C 35.63514959016394 150.23658401639346 36.59845696721311 149.17706147540983 37.56147540983607 148.11782786885246 C 38.233825819672134 146.91499385245902 37.72241188524591 145.34550204918034 38.13934426229508 144.36168032786884 C 41.12952663934426 143.74740573770492 42.949524590163946 140.8635512295082 45.07377049180328 139.1608606557377" stroke="white" stroke-width="inherit" opacity="1" class="highcharts-point highcharts-color-0 highcharts-name-benazirabad" tabindex="-1" role="img" aria-label="6. Benazirabad, value: 33,261." style="outline: 0px;" data-z-index="0"></path>
+                                    </a>
+                                    
+                                    <a xlink:title="5" target="myfr" xlink:href="{% static 'compair.html' %}">
+                                     
+                                    <path fill="rgb(140, 59, 116)" d="M 86.96926229508198 98.13217213114754 C 88.79908401639344 98.3246024590164 90.62919467213116 98.51732172131149 92.45901639344262 98.71004098360656 C 92.64913524590165 99.49536475409836 97.62631967213116 101.43295901639344 98.81557377049181 102.17725409836066 C 98.81557377049181 102.75512295081967 98.81557377049181 103.33299180327869 98.81557377049181 103.91086065573771 C 95.02186475409837 104.37257786885246 92.86439139344263 106.6878094262295 89.28073770491804 105.64446721311475 C 87.76296516393442 110.40784016393442 82.70776844262295 108.67278893442624 79.45696721311475 111.71209016393442 C 78.78548360655739 113.41391393442623 79.17121106557377 113.97040163934427 77.72336065573771 114.89036885245902 C 75.7981905737705 113.9178155737705 74.07671926229509 113.57947336065574 72.81147540983606 115.17930327868852 C 68.87821106557375 115.5208237704918 68.03770081967214 118.6745430327869 66.45491803278689 120.95799180327869 C 63.89467008196722 121.0235799180328 57.567872950819684 122.8204631147541 55.76434426229508 124.13627049180329 C 55.57162500000001 124.13627049180329 55.37919467213114 124.13627049180329 55.18647540983607 124.13627049180329 C 55.88743032786885 125.45294467213115 55.98104508196722 125.20532786885246 56.05327868852459 126.73668032786885 C 54.4161762295082 126.9291106557377 52.778495901639346 127.1218299180328 51.141393442622956 127.31454918032787 C 51.032465163934425 129.74044262295084 50.2234487704918 129.98112500000002 49.407786885245905 131.6485655737705 C 50.081870901639356 132.5150799180328 50.75624385245901 133.38217213114754 51.43032786885246 134.24897540983608 C 51.23760860655739 134.634125 51.04517827868852 135.01956352459018 50.852459016393446 135.4047131147541 C 49.79322540983607 135.50092827868855 48.73341393442623 135.59714344262295 47.674180327868854 135.69364754098362 C 46.46181147540983 138.7173463114754 44.310116803278696 139.16432786885247 42.76229508196722 141.47233606557376 C 42.7533381147541 142.32787090163936 42.82441598360655 142.05945081967215 42.47336065573771 142.91700819672133 C 41.27948360655738 142.56537500000002 41.23932172131148 142.93405532786886 40.450819672131146 142.0502049180328 C 39.48780122950819 141.47233606557376 38.524493852459024 140.89446721311475 37.56147540983607 140.31659836065575 C 38.04312909836065 139.3535799180328 38.524493852459024 138.39027254098363 39.00614754098361 137.42725409836066 C 28.688299180327878 137.05684016393442 20.437487704918027 135.80084221311478 12.713114754098362 132.515368852459 C 12.935883196721317 126.76384016393442 17.2646987704918 125.8089118852459 18.780737704918035 122.11372950819673 C 19.6616987704918 119.96665778688525 19.35138319672132 118.32782172131147 20.225409836065573 116.62397540983606 C 29.43259426229508 120.8227704918033 41.314444672131145 108.73982172131149 46.22950819672131 105.93340163934427 C 47.86661065573771 105.45174795081968 49.50429098360656 104.97009426229509 51.141393442622956 104.48872950819673 C 52.77676229508198 103.09462090163935 52.235588114754094 100.45260450819673 54.60860655737705 99.57684426229508 C 61.954475409836064 96.86548360655738 81.58034631147542 102.44711885245903 86.96926229508198 98.13217213114754" stroke="white" stroke-width="inherit" opacity="1" class="highcharts-point highcharts-color-0 highcharts-name-larkana" tabindex="-1" role="img" aria-label="4. Larkana, value: 32,872." style="outline: 0px;" data-z-index="0"></path>
+                                    
+                                    </a>
+                                    
+                                    <a xlink:title="6" value="hyd" target="frame"  xlink:href="">
+                                      
+                                    
+                                    <path fill="rgb(59, 140, 63)" d="M 12.713114754098362 132.2264344262295 C 17.00899180327869 133.04671926229508 20.312668032786892 134.8566045081967 23.692622950819672 136.27151639344262 C 25.180924180327874 136.89445901639345 37.45168032786886 137.03459221311476 39.584016393442624 137.13831967213116 C 39.10236270491804 138.19755327868853 38.620997950819664 139.25707581967214 38.13934426229508 140.31659836065575 C 39.60164139344262 140.71330532786885 40.520741803278696 141.58097540983607 41.317622950819676 142.62807377049182 C 41.22140778688524 143.10943852459016 41.1249036885246 143.59109221311476 41.028688524590166 144.07274590163934 C 39.7767356557377 144.36168032786884 38.524493852459024 144.65061475409837 37.27254098360656 144.93954918032787 C 37.27254098360656 145.0357643442623 37.27254098360656 145.1319795081967 37.27254098360656 145.22848360655738 C 37.27254098360656 145.3246987704918 37.27254098360656 145.42091393442624 37.27254098360656 145.51741803278688 C 37.94662500000001 145.90256762295084 38.620997950819664 146.288006147541 39.295081967213115 146.67315573770492 C 39.295081967213115 146.96209016393442 39.295081967213115 147.25102459016392 39.295081967213115 147.53995901639345 C 37.718077868852454 148.04559426229508 35.78828483606558 149.98578893442624 34.67213114754099 151.58504098360658 C 35.633704918032784 154.19960860655738 36.1939487704918 158.5255348360656 33.80532786885246 159.6752049180328 C 34.29536065573772 161.37125 35.05814754098361 161.516006147541 37.27254098360656 161.40881147540983 C 37.47623975409836 164.81997131147543 36.46034631147542 165.7194241803279 36.11680327868853 169.49897540983608 C 39.798405737704925 172.33746721311476 42.250881147540994 176.5206598360656 45.9405737704918 179.32274590163934 C 47.45112295081968 179.23866598360655 47.41934016393443 179.1467848360656 48.54098360655738 179.61168032786884 C 50.271700819672134 178.46172131147543 50.22951639344262 176.6856413934426 52.5860655737705 176.14446721311475 C 54.14342213114754 177.43195901639345 56.971801229508195 177.01878278688525 57.786885245901644 178.16700819672133 C 56.00647131147542 178.93615163934427 55.88685245901639 180.75643852459018 55.18647540983607 182.50102459016392 C 57.602256147540984 183.8988893442623 58.09864549180328 187.48687704918032 61.25409836065574 189.72438524590166 C 61.54303278688525 189.53166598360656 61.83196721311476 189.33894672131152 62.12090163934427 189.14651639344262 C 62.52512090163935 187.89831967213115 63.09374385245903 187.95610655737704 64.14344262295083 187.12397540983608 C 65.78054508196722 187.89427459016395 67.41822540983607 188.66486270491805 69.05532786885246 189.43545081967216 C 69.29312090163934 190.7651270491803 68.46763524590165 193.75819877049182 68.76639344262296 194.6362704918033 C 69.53727049180328 196.90209426229507 70.67769467213115 196.81050204918034 71.36680327868852 198.6813524590164 C 71.55952254098362 200.89632377049182 71.75195286885246 203.1118729508197 71.94467213114754 205.32684426229508 C 74.94554508196721 209.38781762295085 80.36162090163934 209.64439139344262 84.94672131147541 212.2612704918033 C 86.9990225409836 217.8261475409836 84.12239139344264 223.50139754098365 81.47950819672131 227.86372950819674 C 80.5999918032787 229.31504713114757 78.48296926229509 229.27488524590166 77.4344262295082 230.4641393442623 C 76.2662643442623 231.78861475409838 76.26424180327871 237.41763524590166 74.83401639344262 239.42110655737704 C 71.77448975409835 239.60660245901641 70.07988934426231 238.04751229508196 67.61065573770492 238.26536885245903 C 67.65284016393443 242.08594877049183 66.83833401639345 245.5615409836066 65.29918032786885 247.8002049180328 C 57.90477049180328 248.9056680327869 51.49793852459016 250.06949590163936 43.62909836065574 250.11168032786887 C 43.150622950819674 251.9883094262295 42.3684774590164 252.89643032786887 41.028688524590166 253.86782786885246 C 38.8131393442623 253.55809016393442 38.47710860655737 252.29689139344262 36.69467213114754 251.8452868852459 C 24.457721311475417 248.74386475409835 20.934743852459015 248.91924795081968 16.46926229508197 237.9764344262295 C 13.90207991803279 231.68546516393442 17.848924180327863 218.0278237704918 24.559426229508198 217.75102459016392 C 22.177739754098365 212.2037725409836 25.47477049180328 208.87582581967214 17.91393442622951 207.06045081967216 C 17.817719262295075 206.19364754098362 17.721215163934435 205.32655532786885 17.625 204.46004098360658 C 19.660831967213113 200.19392418032788 21.061874999999997 198.3620799180328 21.0922131147541 191.7469262295082 C 19.840260245901632 191.84314139344264 18.58801844262296 191.93935655737707 17.336065573770494 192.0358606557377 C 17.336065573770494 191.93935655737707 17.336065573770494 191.84314139344264 17.336065573770494 191.7469262295082 C 18.211825819672132 189.16356352459016 19.656497950819674 187.81366188524592 20.514344262295083 185.96823770491804 C 21.223389344262298 184.44266393442624 20.755604508196715 179.02196516393442 21.0922131147541 176.72233606557376 C 18.498448770491812 174.5830655737705 17.959586065573777 171.64691393442624 16.18032786885246 168.63217213114754 C 11.347032786885244 160.44319262295082 10.624118852459011 155.97222131147544 12.424180327868854 144.93954918032787 C 12.799506147540978 142.63847540983608 11.145645491803275 139.92422540983608 10.979508196721312 138.29405737704917 C 11.557377049180328 136.27151639344262 12.135245901639346 134.24868647540984 12.713114754098362 132.2264344262295" stroke="white" stroke-width="inherit" opacity="1" class="highcharts-point highcharts-color-0 highcharts-name-hyderabad" tabindex="-1" role="img" aria-label="1. Hyderabad, value: 51,004." style="outline: none;" data-z-index="0"></path>
+                                    </a>
+                                    
+                                    <rect x="8.979508399963379" y="130.2264404296875" width="78.6645736694336" height="125.64138793945312" fill="none" rx="3" ry="3" class="highcharts-focus-border" data-z-index="99" ></rect></g></g>
+                                     </tspan></text><text x="120" text-anchor="middle" class="highcharts-subtitle" data-z-index="4" style="color:#666666;fill:#666666;" y="42" aria-hidden="true"></text><text x="10" text-anchor="start" class="highcharts-caption" data-z-index="4" style="color:#666666;fill:#666666;" y="407" aria-hidden="true"></text><g class="highcharts-data-labels highcharts-series-0 highcharts-map-series highcharts-color-0 highcharts-tracker" data-z-index="6" opacity="1" transform="translate(10,43) scale(1 1)" clip-path="url(#highcharts-t1grp0b-1898-)" aria-hidden="true"><g class="highcharts-label highcharts-data-label highcharts-data-label-color-0" data-z-index="1" transform="translate(24,186)"><text x="0" data-z-index="1" y="10" style="color:#ffffff;font-size:9px;font-weight:bold;fill:#ffffff;"><tspan x="0" y="10" class="highcharts-text-outline" fill="#000000" stroke="#000000" stroke-width="2px" stroke-linejoin="round" >Hyderabad</tspan><tspan x="0" y="10">Hyderabad</tspan></text></g><g class="highcharts-label highcharts-data-label highcharts-data-label-color-0 highcharts-data-label-hidden" data-z-index="1" transform="translate(-4,198)" opacity="0" style="pointer-events:none;"><text x="0" data-z-index="1" y="10" style="color:#ffffff;font-size:9px;font-weight:bold;fill:#ffffff;"><tspan x="0" y="10" class="highcharts-text-outline" fill="#000000" stroke="#000000" stroke-width="2px" stroke-linejoin="round" style="">Karachi</tspan><tspan x="0" y="10">Karachi</tspan></text></g><g class="highcharts-label highcharts-data-label highcharts-data-label-color-0" data-z-index="1" transform="translate(63,132)"><text x="0" data-z-index="1" y="10" style="color:#ffffff;font-size:9px;font-weight:bold;fill:#ffffff;"><tspan x="0" y="10" class="highcharts-text-outline" fill="#000000" stroke="#000000" stroke-width="2px" stroke-linejoin="round" style="">Sukkur</tspan><tspan x="0" y="10">Sukkur</tspan></text></g><g class="highcharts-label highcharts-data-label highcharts-data-label-color-0" data-z-index="1" transform="translate(38,114)"><text x="0" data-z-index="1" y="10" style="color:#ffffff;font-size:9px;font-weight:bold;fill:#ffffff;"><tspan x="0" y="10" class="highcharts-text-outline" fill="#000000" stroke="#000000" stroke-width="2px" stroke-linejoin="round" style="">Larkana</tspan><tspan x="0" y="10">Larkana</tspan></text></g><g class="highcharts-label highcharts-data-label highcharts-data-label-color-0" data-z-index="1" transform="translate(78,206)"><text x="0" data-z-index="1" y="10" style="color:#ffffff;font-size:9px;font-weight:bold;fill:#ffffff;"><tspan x="0" y="10" class="highcharts-text-outline" fill="#000000" stroke="#000000" stroke-width="2px" stroke-linejoin="round" style="">Mirpur Khas</tspan><tspan x="0" y="10">Mirpur Khas</tspan></text></g><g class="highcharts-label highcharts-data-label highcharts-data-label-color-0" data-z-index="1" transform="translate(46,160)"><text x="0" data-z-index="1" y="10" style="color:#ffffff;font-size:9px;font-weight:bold;fill:#ffffff;"><tspan x="0" y="10" class="highcharts-text-outline" fill="#000000" stroke="#000000" stroke-width="2px" stroke-linejoin="round" style="">Benazirabad</tspan><tspan x="0" y="10">Benazirabad</tspan></text></g></g><g class="highcharts-legend" data-z-index="7" transform="translate(163,93)" aria-hidden="true"><rect fill="none" class="highcharts-legend-box" rx="0" ry="0" x="0" y="0" width="66" height="219" visibility="visible"></rect><g data-z-index="1"><g><g class="highcharts-legend-item highcharts-undefined-series highcharts-color-undefined" data-z-index="1" transform="translate(8,3)"><rect x="0" y="4" width="12" height="200" fill="url(#highcharts-t1grp0b-1897)" data-z-index="1"></rect><g class="highcharts-grid highcharts-coloraxis-grid" data-z-index="1">
+                                    
+                                    
+                                    <a xlink:title="7" xlink:href="">
+                                    <path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 0 3.5 L 12 3.5" opacity="1"></path>
+                                    </a>
+                                    
+                                    <a xlink:title="8" xlink:href="">
+                                    <path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 0 71.5 L 12 71.5" opacity="1"></path>
+                                    </a>
+                                    
+                                    <a xlink:title="9" xlink:href="">
+                                    <path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 0 137.5 L 12 137.5" opacity="1"></path>
+                                    </a>
+                                    
+                                    <a xlink:title="10" xlink:href="">
+                                    <path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 0 204.5 L 12 204.5" opacity="1"></path></g><text x="21" style="color:#333333;cursor:pointer;font-size:12px;font-weight:bold;fill:#333333;" text-anchor="start" data-z-index="2" y="15"></text><g class="highcharts-axis highcharts-coloraxis" data-z-index="2">
+                                    </a>
+                                    
+                                    <a xlink:title="11" xlink:href="">
+                                    <path fill="none" class="highcharts-axis-line" data-z-index="7" d="M 12 4 L 12 204"></path></a>
+                                    </a>
+                                    <a xlink:title="12" xlink:href="">
+                                    <path fill="#999999" class="highcharts-crosshair highcharts-crosshair-thin undefined highcharts-coloraxis-marker" data-z-index="2" stroke="#999999" stroke-width="0.01" style="pointer-events:none;" visibility="hidden" d="M 0 174.01333333333335 L -6 180.01333333333335 L -6 168.01333333333335 Z"></path>
+                                    </a>
+                                    
+                                    
+                                  
+                                  </a>
+                                  </svg>
+                                  
+                                  
+                                </div>
+                                
+							
+						</div>
+					</div>
+					
+                </div> 
+                <div class="row">                      
+                    <div class="col-12 col-md-7 col-lg-7 col-xl-7">
+						<div class="card">
+							<div class="card-body">
+                                <script src="https://code.highcharts.com/highcharts.js"></script>
+                                <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                                <script src="https://code.highcharts.com/modules/export-data.js"></script>
+                                <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+                                
+                                <figure class="highcharts-figure">
+                                    <div id="Divisionwisetbreport"></div>
+                                
+                                </figure>
+                                
+                                <script>
+                                
+                                      _TC ={{ TC|safe }};
+                                      _CURED ={{ CURED|safe }};
+                                      _Div ={{ Div|safe }};
+                                      _TF ={{ TF|safe }};
+                                      _DIED ={{ DIED|safe }};
+                                
+                                Highcharts.chart('Divisionwisetbreport', {
+                                    chart: {
+                                        type: 'bar'
+                                    },
+                                    title: {
+                                        text: 'Division Wise TB Report'
+                                    },
+                                    subtitle: {
+                                        text: ''
+                                    },
+                                    xAxis: {
+                                        categories: _Div,
+                                        title: {
+                                            text: null
+                                        }
+                                    },
+                                    yAxis: {
+                                        min: 0,
+                                        title: {
+                                            text: '',
+                                            align: 'high'
+                                        },
+                                        labels: {
+                                            overflow: 'justify'
+                                        }
+                                    },
+                                    tooltip: {
+                                        valueSuffix: ' '
+                                    },
+                                    plotOptions: {
+                                        bar: {
+                                            dataLabels: {
+                                                enabled: true
+                                            }
+                                        }
+                                    },
+                                    legend: {
+                                        layout: 'vertical',
+                                        align: 'right',
+                                        verticalAlign: 'top',
+                                        x: -40,
+                                        y: 80,
+                                        floating: true,
+                                        borderWidth: 1,
+                                        backgroundColor:
+                                            Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+                                        shadow: true
+                                    },
+                                    credits: {
+                                        enabled: false
+                                    },
+                                    series: [{
+                                        name: 'TREATMENT_COMPLETED',
+                                        data: _TC
+                                    }, {
+                                        name: 'CURED',
+                                        data: _CURED
+                                    }, {
+                                        name: 'DIED',
+                                        data: _DIED
+                                    }, {
+                                        name: 'TREATMENT_FAILED',
+                                        data: _TF
+                                    }]
+                                });
+                                
+                                
+                                </script>
+							</div>
+						</div>
+					</div>
+                    
+					<div  class="col-12 col-md-5 pt-0 col-lg-5 col-xl-5 ">
+						<div  class="card">
+							<div class="card-body">
+                                
+                            <script src="https://code.highcharts.com/highcharts.js"></script>
+                            <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                            <script src="https://code.highcharts.com/modules/export-data.js"></script>
+                            <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+                            <figure class="highcharts-figure">
+                                <div id="tbpiechart"></div>
+                                
+                            </figure>
+                             <script>
+                                 // Build the chart
+                                Highcharts.chart('tbpiechart', {
+                                    chart: {
+                                        plotBackgroundColor: null,
+                                        plotBorderWidth: null,
+                                        plotShadow: false,
+                                        type: 'pie'
+                                    },
+                                    title: {
+                                        text: 'TB Program Report, Quarter 1- 2019'
+                                
+                                    },
+                                    plotOptions: {
+                                        pie: {
+                                            allowPointSelect: true,
+                                            cursor: 'pointer',
+                                            dataLabels: {
+                                                enabled: false
+                                            },
+                                            showInLegend: true
+                                        }
+                                    },
+                                    series: [{
+                                        name: 'Value',
+                                        colorByPoint: true,
+                                        data: [ {
+                                            name: 'Total Patients',
+                                            y: 23623
+                                        }, {
+                                            name: 'New Patients',
+                                            y: 19655
+
+                                        }, {
+                                            name: 'Relapse',
+                                            y: 3737
+
+                                        }, {
+                                            name: 'Treatment After Failure',
+                                            y: 1731
+
+                                        }, {
+                                            name: 'Lost To Follow-UP',
+                                            y: 2175
+
+                                        }]
+                                    }]
+                                });
+                             </script>
+							</div>
+						</div>
+					</div>
+					
+                </div>
+                
+            
+            
+				
+            </div>
+            
+        </div>
+    </div>
+  <div class="sidebar-overlay" data-reff=""></div>
+       
+  <script src="{% static 'js/Chart.bundle.js' %}"></script>
+     
+  <script src="{% static 'js/chart.js' %}"></script>
+    
+  <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+  
+  <script src="{% static 'js/popper.min.js' %}"></script>
+    
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+  
+  
+  <script src="{% static 'js/jquery.slimscroll.js' %}"></script>
+    
+  <script src="{% static 'js/app.js' %}"></script>
+</body>
+
+
+
+</html>
