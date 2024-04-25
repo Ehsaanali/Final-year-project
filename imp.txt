@@ -1,0 +1,10 @@
+
+python --version
+
+verify django-admin --version
+
+Virtual 
+pip install virtualenvwrapper-win
+mkvirtualenv test
+pip install django
+mkdir projects
